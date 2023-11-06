@@ -1,4 +1,15 @@
 import { Chart } from "react-google-charts";
+import styled from "styled-components";
+
+const Container = styled.div`
+  position: relative;
+  .text-container {
+    position: absolute;
+    top: 42%;
+    left: 38%;
+    text-align: center;
+  }
+`;
 
 const ShowsGenres = ({ shows }) => {
   const options = {
@@ -33,16 +44,22 @@ const ShowsGenres = ({ shows }) => {
   console.log("top5Genres", top5Genres);
 
   const data = top5Genres?.map((item) => [item.genre, item.count]);
-  data.unshift(["Task", "Hours per Day"]);
+  data.unshift(["Genre", "Count"]);
 
   return (
-    <Chart
-      chartType="PieChart"
-      width="100%"
-      height="400px"
-      data={data}
-      options={options}
-    />
+    <Container>
+      <Chart
+        chartType="PieChart"
+        width="100%"
+        height="400px"
+        data={data}
+        options={options}
+      />
+      <div className="text-container">
+        <p className="has-text-weight-bold is-size-4">5</p>
+        <span className="is-size-7 is-uppercase">Top Genres</span>
+      </div>
+    </Container>
   );
 };
 export default ShowsGenres;

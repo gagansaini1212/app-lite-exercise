@@ -13,8 +13,11 @@ const ArrowsContainer = styled.div`
   position: absolute;
   bottom: 70%;
   width: 100%;
+  left: -15px;
   @media only screen and (max-width: 768px) {
     position: relative;
+    left: 0px;
+    top: 15px;
     .slider-arrow {
       justify-content: center !important;
       gap: 10;
@@ -47,7 +50,7 @@ const ArrowsContainer = styled.div`
 
 const Image = styled.figure`
   img {
-    width: 88%;
+    width: 90%;
     @media screen and (max-width: 768px) {
       width: 100%;
     }

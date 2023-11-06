@@ -34,7 +34,7 @@ const Schedule = ({ shows }) => {
     <Container>
       {result?.map((item, index) => {
         return (
-          <div key={index} className="pb-2">
+          <div key={index} className="pb-3">
             <p>{item.day}</p>
             <progress
               class="progress is-warning"
