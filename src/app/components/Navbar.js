@@ -10,7 +10,6 @@ const Navbar = () => (
       <a className="navbar-item has-text-weight-bold" href="/">
         ShowBox
       </a>
-
       <a
         role="button"
         className="navbar-burger"
@@ -23,21 +22,6 @@ const Navbar = () => (
         <span aria-hidden="true"></span>
       </a>
     </div>
-
-    {/* <div id="navbarBasicExample" className="navbar-menu">
-    <div className="navbar-end">
-      <div className="navbar-item">
-        <div className="buttons">
-          <a className="button is-primary">
-            <strong>Sign up</strong>
-          </a>
-          <a className="button is-light">
-            Log in
-          </a>
-        </div>
-      </div>
-    </div>
-  </div> */}
   </Container>
 );
 
