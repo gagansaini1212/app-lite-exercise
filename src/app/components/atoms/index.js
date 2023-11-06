@@ -1,3 +1,4 @@
+import Heading from "./Heading";
 import Title from "./Title";
 
-export { Title }
+export { Heading, Title };

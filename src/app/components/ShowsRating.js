@@ -10,16 +10,21 @@ const Rating = ({ shows }) => {
   // Calculate the average rating
   const averageRating = sumOfRatings / shows.length;
   return (
-    <GaugeChart
-      id="gauge-chart5"
-      nrOfLevels={300}
-      arcsLength={[1, 2, 3, 4, 4, 5, 6, 7, 8, 10]}
-      colors={["#5BE12C", "#F5CD19", "#EA4228"]}
-      percent={averageRating}
-      arcPadding={0.02}
-      cornerRadius={1}
-      hideText={true}
-    />
+    <div className="pt-6">
+      <GaugeChart
+        id="gauge-chart5"
+        nrOfLevels={300}
+        arcsLength={[1, 2, 3, 4, 4, 5, 6, 7, 8, 10]}
+        colors={["#5BE12C", "#F5CD19", "#EA4228"]}
+        percent={averageRating}
+        arcPadding={0.02}
+        cornerRadius={1}
+        hideText={true}
+      />
+      <p className="is-size-4 has-text-weight-semibold has-text-centered pt-6">
+        {averageRating.toFixed(1)} Stars
+      </p>
+    </div>
   );
 };
 

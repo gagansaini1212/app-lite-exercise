@@ -1,10 +1,48 @@
-import React from "react";
+import React, { useRef } from "react";
 import Slider from "react-slick";
 import styled from "styled-components";
+
+import { LeftKeyboardArrow, RightKeyboardArrow } from "./icons";
 
 const Container = styled.div`
   border-bottom: 0.5px solid #e4eaf0;
   padding-bottom: 20px;
+`;
+
+const ArrowsContainer = styled.div`
+  position: absolute;
+  bottom: 70%;
+  width: 100%;
+  @media only screen and (max-width: 768px) {
+    position: relative;
+    .slider-arrow {
+      justify-content: center !important;
+      gap: 10;
+    }
+    button {
+      margin: 0 10px !important;
+    }
+  }
+
+  button {
+    cursor: pointer;
+    height: 3rem;
+    width: 3rem;
+    border-radius: 2rem;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+  }
+  :hover {
+    transition: 0.5s;
+  }
+
+  svg:not(:root).svg-inline--fa {
+  }
+  .slider-arrow {
+    justify-content: space-between;
+    display: flex;
+  }
 `;
 
 const Image = styled.figure`
@@ -16,37 +54,18 @@ const Image = styled.figure`
   }
 `;
 
-function SamplePrevArrow(props) {
-  const { className, style, onClick } = props;
-  return (
-    <div
-      className={className}
-      style={{ ...style, display: "block", background: "green" }}
-      onClick={onClick}
-    />
-  );
-}
-
-function SampleNextArrow(props) {
-  const { className, style, onClick } = props;
-  return (
-    <div
-      className={className}
-      style={{ ...style, display: "block", background: "black" }}
-      onClick={onClick}
-    />
-  );
-}
+const Genre = styled.p`
+  color: #9ca3af;
+`;
 
 const SlickSlider = ({ data }) => {
+  const customSlider = useRef();
   const settings = {
     dots: false,
     infinite: true,
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 1,
-    nextArrow: <SampleNextArrow />,
-    prevArrow: <SamplePrevArrow />,
     responsive: [
       {
         breakpoint: 768,
@@ -59,9 +78,30 @@ const SlickSlider = ({ data }) => {
       },
     ],
   };
+
+  const renderArrows = () => {
+    return (
+      <div className="slider-arrow">
+        <button
+          type="button"
+          className="arrow-btn prev"
+          onClick={() => customSlider.current.slickPrev()}
+        >
+          <LeftKeyboardArrow className="icon-class" />
+        </button>
+        <button
+          type="button"
+          className="arrow-btn next"
+          onClick={() => customSlider.current.slickNext()}
+        >
+          <RightKeyboardArrow className="icon-class" />
+        </button>
+      </div>
+    );
+  };
   return (
     <Container>
-      <Slider {...settings}>
+      <Slider {...settings} ref={(slider) => (customSlider.current = slider)}>
         {data?.map((item) => {
           console.log(item);
 
@@ -79,13 +119,13 @@ const SlickSlider = ({ data }) => {
               <div className="is-flex">
                 {item?.show?.genres?.map((genre, index) => {
                   return (
-                    <p
+                    <Genre
                       className="is-size-7 has-text-weight-bold pr-1"
                       key={index}
                     >
                       {genre}{" "}
                       {index + 1 === item?.show?.genres.length ? "" : ","}
-                    </p>
+                    </Genre>
                   );
                 })}
               </div>
@@ -93,6 +133,7 @@ const SlickSlider = ({ data }) => {
           );
         })}
       </Slider>
+      <ArrowsContainer>{renderArrows()}</ArrowsContainer>
     </Container>
   );
 };
