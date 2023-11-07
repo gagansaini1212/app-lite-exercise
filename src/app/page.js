@@ -28,8 +28,8 @@ export default function Home() {
     <Container className="section">
       <div className="container">
         <Header />
-        <Title title="Featured Shows" />
         {loading && <h1>Loading...</h1>}
+        <Title title="Featured Shows" />
         <Slider data={shows} />
         <ShowsStats shows={shows} />
       </div>

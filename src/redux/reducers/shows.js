@@ -1,4 +1,4 @@
-import { createSlice, nanoid, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "../../helpers/api";
 
 const initialState = {
@@ -9,7 +9,7 @@ const initialState = {
 
 export const fetchShows = createAsyncThunk("search/shows", async () => {
   const response = await axios.get("/search/shows?q=spiderman");
-  console.log("response", response);
+  // console.log("response", response);
   return response;
 });
 
@@ -24,7 +24,7 @@ export const shows = createSlice({
         state.error = null;
       })
       .addCase(fetchShows.fulfilled, (state, action) => {
-        console.log("action", action);
+        // console.log("action", action);
         state.loading = false;
         state.data = action.payload.data;
       })

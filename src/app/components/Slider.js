@@ -106,8 +106,9 @@ const SlickSlider = ({ data }) => {
     <Container>
       <Slider {...settings} ref={(slider) => (customSlider.current = slider)}>
         {data?.map((item) => {
-          console.log(item);
-
+          {
+            /* console.log(item); */
+          }
           return (
             <div key={item.show.id}>
               <Image className="image is-4x5">

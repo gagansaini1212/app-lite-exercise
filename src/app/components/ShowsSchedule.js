@@ -6,8 +6,6 @@ const Container = styled.div`
   }
 `;
 
-const Wrapper = styled.div``;
-
 const Schedule = ({ shows }) => {
   const showCounts = {
     Sunday: 0,
@@ -19,6 +17,7 @@ const Schedule = ({ shows }) => {
     Saturday: 0,
   };
 
+  // Getting shows from each day
   shows.forEach((item) => {
     item.show.schedule.days.forEach((day) => {
       showCounts[day] += 1;

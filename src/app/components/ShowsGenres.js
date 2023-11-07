@@ -41,7 +41,7 @@ const ShowsGenres = ({ shows }) => {
 
   // Get the top 5 genres
   const top5Genres = genreCountsArray.slice(0, 5);
-  console.log("top5Genres", top5Genres);
+  // console.log("top5Genres", top5Genres);
 
   const data = top5Genres?.map((item) => [item.genre, item.count]);
   data.unshift(["Genre", "Count"]);

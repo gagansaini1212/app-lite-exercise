@@ -9,6 +9,7 @@ const Rating = ({ shows }) => {
 
   // Calculate the average rating
   const averageRating = sumOfRatings / shows.length;
+
   return (
     <div className="pt-6">
       <GaugeChart
